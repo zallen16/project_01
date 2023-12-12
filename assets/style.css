@@ -27,6 +27,27 @@ header {
     background-color: rgb(167, 167, 253)
 }
 
+.card {
+    width: 99.5%;
+    height: 200px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.card:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
+}
+
+h3 {
+    font-size: 22px;
+}
+
+.card-container {
+    padding: 10px;
+}
+
 .description {
     white-space: pre-wrap;
 }
