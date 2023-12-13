@@ -3,6 +3,12 @@ header {
     background-color: rgb(229, 224, 224);
     display: inline-block;
     text-align: center;
+    background-image: url(/images/AdobeStock_117251294.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    width: 75%;
 }
 
 .split {
@@ -25,6 +31,15 @@ header {
     border-radius: 20px;
     right: 0;
     background-color: rgb(167, 167, 253)
+}
+
+.card {
+    width: 99.5%;
+    height: 200px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
 }
 
 .description {
