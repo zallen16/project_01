@@ -3,6 +3,12 @@ header {
     background-color: rgb(229, 224, 224);
     display: inline-block;
     text-align: center;
+    background-image: url(/images/AdobeStock_117251294.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    width: 75%;
 }
 
 .split {
