@@ -31,7 +31,6 @@ button , .search-button , .saveButton {
 }
 
 .split {
-    
     height: 80%;
     width: 50%;
     position: fixed;
@@ -91,9 +90,9 @@ textarea {
 
 .card {
     width: 99.5%;
-    height: 200px;
+    height: 150px;
     background-color: white;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     border-radius: 12px;
@@ -105,11 +104,14 @@ textarea {
 }
 
 h3 {
-    font-size: 22px;
+    font-size: 18px;
+
 }
 
 .card-container {
     padding: 10px;
+    line-height: 0.8;
+    padding-top: 2px;
 }
 
 
@@ -127,6 +129,7 @@ h3 {
 }
 
 footer {
+    display: flex;
     background-color: white;
     overflow: hidden;
     z-index: 2;
@@ -144,7 +147,7 @@ footer ul {
 }
 
 footer nav ul li {
-    align-content: center;
+    
     padding: 5px;
     margin: 5px;
 
@@ -152,7 +155,7 @@ footer nav ul li {
     left: 0;
     right: 0;
     position: absolute;
-    z-index: 2;
+    z-index: 1;
 }
 
 
