@@ -31,6 +31,26 @@ function getRecipe() {
 
 // make sort by function
 
+// variables for music api
+
+// add event listener to search button for 2nd function
+searchBtn.addEventListener("click", getSong);
+
+// fetch music api data
+function getSong() {
+    
+    var musicLookUp = searchInput.value;
+
+    var musicURL = 'http://musicbrainz.org/ws/2/url/?query=${musicLookUp}'
+    fetch(musicURL)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        console.log(data);
+    })
+}
+
 // make function to save shopping list items to local storage
 // then displaying those items on the page in a html card
 
