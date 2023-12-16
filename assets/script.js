@@ -1,24 +1,20 @@
 // variables for api url, api key if needed, and certain parameters
 var spoonAPIKey = "5d4a78a65dbf4c8cb0b08b069647c103"
+var tubeAPIKey = "AIzaSyAbk0ppUBV5Bv5aBCFVUP2Bz5i6_TUzQCE"
 var musicAPI =  `http://musicbrainz.org/ws/2/artist/5b11f4ce-a62d-471e-81fc-a69a8278c7da?inc=aliases`
 // variables for search button
 searchInput = document.querySelector("#ingredient-input")
 searchBtn = document.querySelector("#search-button")
 // any other variables needed
-var recipeName1 = document.querySelector(".recipeName1")
-var recipeName2 = document.querySelector(".recipeName2")
-var recipeName3 = document.querySelector(".recipeName3")
-var recipeName4 = document.querySelector(".recipeName4")
-var recipeName5 = document.querySelector(".recipeName5")
-var recipeImg = document.querySelector(".recipeImg")
-var recipeIdCard = document.querySelector(".recipeID1")
-var picture1 = document.getElementById("picture1")
-var picture2 = document.getElementById("picture2")
-var picture3 = document.getElementById("picture3")
-var picture4 = document.getElementById("picture4")
-var picture5 = document.getElementById("picture5")
+var cardWrapper = document.querySelector("#cards")
+var video = document.querySelector("#video");
+
+
 // add event listener to search button to fetch data
-searchBtn.addEventListener("click", getRecipe);
+searchBtn.addEventListener("click", function(){
+    getRecipe();
+    getMusic();
+});
 
 
 // fetch api data
@@ -36,40 +32,65 @@ function getRecipe() {
     .then(function(data) {
         console.log(data);
 
-        recipeName1.textContent = data[0].title;
-        recipeName2.textContent = data[1].title;
-        recipeName3.textContent = data[2].title;
-        recipeName4.textContent = data[3].title;
-        recipeName5.textContent = data[4].title;
-        recipeIdCard.textContent = data[0].id
-        picture1.src = data[0].image;
-        picture2.src = data[1].image;
-        picture3.src = data[2].image;
-        picture4.src = data[3].image;   
-        picture5.src = data[4].image;
+        Promise.all(data.map(function(recipe) {
+            return fetch(`https://api.spoonacular.com/recipes/${recipe.id}/card?&apiKey=${spoonAPIKey}`)
+            .then(function(response) {
+                return response.json();
+            })
+        }))
+        .then(function(recipeImages) {
+            console.log(recipeImages);
+            cardWrapper.innerHTML = "";
+            for (var i = 0; i < data.length; i++) {
+    
+                var cardHtml = `
+                <div class="card">
+                    <div class="card-container">
+                        <h3><b>${data[i].title}</b></h3>
+                        <img src =${data[i].image}>
+                        <p>Brief description</p>
+                        <h3><b>Song Title</b></h3>
+                        <p>Artist - Year</p>
+                        <div><img class="recipeImg" src=${recipeImages[i].url}></div>
+                    </div>
+                </div>
+                `
+                cardWrapper.innerHTML += cardHtml;
+                // var recipeID = data[i].id;
+                // var recipeURL = `https://api.spoonacular.com/recipes/${recipeID}/information?&apiKey=${spoonAPIKey}`
+               
+            }
+        })
 
     })
 }
 
-// function getRecipeCard( {
-
-//     var recipeID = data[i].id;
-//     for (var i = 0; i < data.length; i++) {
-
-//     }
-// })
 // fetch music api data
-// function getMusic() {
 
-// fetch(musicAPI)
-// .then(function(response) {
-// console.log(response)
-//     //return response.json();
-// })
-// .then(function(data) {
-//     console.log(data);
-// })
-// }
+function getMusic() {
+    
+    var lookUp = searchInput.value + " music";
+    
+    var tubeURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${lookUp}&key=${tubeAPIKey}`
+    fetch(tubeURL)
+    .then(function(response) {
+        return response.json();
+        //console.log(response);
+    })
+    .then(function(data) {
+            var randomIndex = Math.floor(Math.random() * data.items.length);
+            var videoId = data.items[randomIndex].id.videoId;
+            var videoUrl = `https://www.youtube.com/embed/${videoId}`;
+            var videoHtml = `
+            <iframe width="560" height="315" src=${videoUrl} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+            console.log(data);
+            video.innerHTML = videoHtml;
+          
+})
+}
+
+
+
 
 // console log the results
 

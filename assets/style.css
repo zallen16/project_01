@@ -90,7 +90,7 @@ textarea {
 
 .card {
     width: 99.5%;
-    height: 150px;
+    /* height: 150px; */
     background-color: white;
     border: 2px solid #ccc;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -158,4 +158,7 @@ footer nav ul li {
     z-index: 1;
 }
 
+.recipeImg {
+    width: 500px;
+}
 
