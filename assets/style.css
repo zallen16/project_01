@@ -1,6 +1,8 @@
+
+
 body {
     background-color: darkgray;
-    
+    margin: 5px;
 }
 
 header {
@@ -44,12 +46,12 @@ button , .search-button , .saveButton {
 }
 
 .split {
-    height: 70% ;
-    width: 50%;
-    position: fixed;
+
+    height: 100%;
+    width: 100%;
+    position: absolute;
     z-index: 1;
     overflow-x: hidden;
-    padding: 20px;
     margin-bottom: 100px;
 }
 
@@ -57,7 +59,7 @@ button , .search-button , .saveButton {
     border-radius: 20px;
     left: 0;
     background-color: rgb(94, 168, 181);
-    width: 47%;
+    width: 50%;
 }
 
 label {
