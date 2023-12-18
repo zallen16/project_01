@@ -13,6 +13,18 @@ header {
     background-position: center;
     color: white;
     width: 100%;
+    margin: 5px;
+}
+
+nav {
+    width: 120px;
+    background-color: white;
+    left: 0;
+}
+
+nav ul li {
+    display: flex;
+    flex-direction: column;
 }
 
 h2 {
@@ -37,7 +49,7 @@ button , .search-button , .saveButton {
     z-index: 1;
     overflow-x: hidden;
     padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 100px;
 }
 
 .left {
@@ -86,6 +98,7 @@ textarea {
     right: 0;
     background-color: rgb(122, 153, 101);
     width: 50%;
+    
 }
 
 .card {
@@ -114,6 +127,26 @@ h3 {
     padding-top: 2px;
 }
 
+.cards {
+    width: 99.5%;
+    /* height: 150px; */
+    background-color: white;
+    border: 2px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border-radius: 12px;
+}
+
+.cardPics {
+    display: flex;
+}
+
+.recipeImg {
+    display: flex;
+    width: 250px;
+    height: 220px;
+}
+
 
 .description {
     white-space: pre-wrap;
@@ -128,14 +161,14 @@ h3 {
     text-align: left;
 }
 
-footer {
+/* footer {
     display: flex;
     background-color: white;
     overflow: hidden;
     z-index: 2;
     height: 50px;
     width: 100%;
-    position: absolute;
+    position:relative;
     bottom: 0;
     left: 0;
 }
@@ -147,18 +180,13 @@ footer ul {
 }
 
 footer nav ul li {
-    
     padding: 5px;
     margin: 5px;
-
     bottom: 0;
     left: 0;
     right: 0;
-    position: absolute;
     z-index: 1;
-}
+} */
 
-.recipeImg {
-    width: 500px;
-}
+
 

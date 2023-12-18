@@ -47,11 +47,13 @@ function getRecipe() {
                 <div class="card">
                     <div class="card-container">
                         <h3><b>${data[i].title}</b></h3>
-                        <img src =${data[i].image}>
-                        <p>Brief description</p>
-                        <h3><b>Song Title</b></h3>
-                        <p>Artist - Year</p>
-                        <div><img class="recipeImg" src=${recipeImages[i].url}></div>
+                        <div class="cardPics">
+                            <img src =${data[i].image}>
+                            <p></p>
+                            <h3><b></b></h3>
+                            <p></p>
+                            <div><img class="recipeImg" src=${recipeImages[i].url}></div>
+                        </div>
                     </div>
                 </div>
                 `
