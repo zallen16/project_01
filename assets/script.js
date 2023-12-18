@@ -23,11 +23,9 @@ function getRecipe() {
     var lookUp = searchInput.value;
     
     var spoonURL = `https://api.spoonacular.com/recipes/findByIngredients?ingredients=${lookUp}&number=5&apiKey=${spoonAPIKey}`
-    //var spoonURL2 = `https://api.spoonacular.com/recipes/633338/card?&apiKey=${spoonAPIKey}`
     fetch(spoonURL)
     .then(function(response) {
         return response.json();
-        //console.log(response);
     })
     .then(function(data) {
         console.log(data);
@@ -54,8 +52,6 @@ function getRecipe() {
                 </div>
                 `
                 cardWrapper.innerHTML += cardHtml;
-                // var recipeID = data[i].id;
-                // var recipeURL = `https://api.spoonacular.com/recipes/${recipeID}/information?&apiKey=${spoonAPIKey}`
                
             }
         })
@@ -73,7 +69,6 @@ function getMusic() {
     fetch(tubeURL)
     .then(function(response) {
         return response.json();
-        //console.log(response);
     })
     .then(function(data) {
             var videoUrl;
@@ -109,14 +104,6 @@ console.log(event.target);
 
 
 
-// console log the results
-
-// put results on page in html cards
-
-
-// make sort by function
-
-// variables for music api
 
 // add event listener to search button for 2nd function
 searchBtn.addEventListener("click", getSong);

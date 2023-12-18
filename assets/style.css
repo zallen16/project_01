@@ -44,7 +44,7 @@ button , .search-button , .saveButton {
 }
 
 .split {
-    height: 70%;
+    height: 70% ;
     width: 50%;
     position: fixed;
     z-index: 1;
