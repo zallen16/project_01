@@ -47,13 +47,9 @@ function getRecipe() {
                 <div class="card">
                     <div class="card-container">
                         <h3><b>${data[i].title}</b></h3>
-                        <div class="cardPics">
-                            <img src =${data[i].image}>
-                            <p></p>
-                            <h3><b></b></h3>
-                            <p></p>
-                            <div><img class="recipeImg" src=${recipeImages[i].url}></div>
-                        </div>
+                        <img src =${data[i].image}>
+                        <button class="recipeCardBtn">Show Recipe</button>
+                        <div class="hidden"><img class="recipeImg" src=${recipeImages[i].url}></div>
                     </div>
                 </div>
                 `
@@ -73,16 +69,22 @@ function getMusic() {
     
     var lookUp = searchInput.value + " music";
     
-    var tubeURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${lookUp}&key=${tubeAPIKey}`
+    var tubeURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&q=${lookUp}&key=${tubeAPIKey}`
     fetch(tubeURL)
     .then(function(response) {
         return response.json();
         //console.log(response);
     })
     .then(function(data) {
-            var randomIndex = Math.floor(Math.random() * data.items.length);
-            var videoId = data.items[randomIndex].id.videoId;
-            var videoUrl = `https://www.youtube.com/embed/${videoId}`;
+            var videoUrl;
+            if (data.items.length) {
+
+                var randomIndex = Math.floor(Math.random() * data.items.length);
+                var videoId = data.items[randomIndex].id.videoId;
+                var videoUrl = `https://www.youtube.com/embed/${videoId}`;
+            } else {
+                videoUrl = "https://www.youtube.com/embed/7dTFfuDpmsY"
+            }
             var videoHtml = `
             <iframe width="560" height="315" src=${videoUrl} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
             console.log(data);
@@ -91,6 +93,19 @@ function getMusic() {
 })
 }
 
+//hide recipe cards until recipe is clicked
+cardWrapper.addEventListener("click", function(event) {
+console.log(event.target);
+   if (event.target.matches(".recipeCardBtn")) {
+       var recipeWrapper = event.target.nextElementSibling;
+       recipeWrapper.classList.toggle("hidden");
+   }
+   if (event.target.textContent === "Show Recipe") {
+       event.target.textContent = "Hide Recipe";
+   }    else {
+         event.target.textContent = "Show Recipe";
+   }
+})
 
 
 
